@@ -823,12 +823,12 @@ end
  
 local AnimAnim = Instance.new("Animation")
  
-AnimAnim.AnimationId = "rbxassetid://13365849295"
+AnimAnim.AnimationId = "rbxassetid://13497875049"
  
 local Anim = Humanoid:LoadAnimation(AnimAnim)
  
 
-local startTime = 0.95
+local startTime = 0.2
  
  
 Anim:Play()
@@ -1327,8 +1327,4 @@ fadeInTween:Play()
 ]]
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ATrainz/Phantasm/refs/heads/main/Games/TSB.lua"))()
 
---[[
-	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
-]]
-loadstring(game:HttpGet("https://paste.ee/r/mmQkO"))()
  
