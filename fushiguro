@@ -1,0 +1,1334 @@
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+local playerGui = player:WaitForChild("PlayerGui")
+local hotbar = playerGui:FindFirstChild("Hotbar")
+local backpack = hotbar:FindFirstChild("Backpack")
+local hotbarFrame = backpack:FindFirstChild("Hotbar")
+
+local buttonData = {
+    {name = "1", text = "Pure Strength"},
+    {name = "2", text = "Cursed Barrage"},
+    {name = "3", text = "Sent To Shadows"},
+    {name = "4", text = "Direct hit"}, -- Basemovesets renamer
+}
+
+for _, data in pairs(buttonData) do
+    local baseButton = hotbarFrame:FindFirstChild(data.name).Base
+    local ToolName = baseButton.ToolName
+    ToolName.Text = data.text
+end
+
+local function waitForGui()
+    while true do
+        local screenGui = playerGui:FindFirstChild("ScreenGui")
+        if screenGui then
+            local magicHealthFrame = screenGui:FindFirstChild("MagicHealth")
+            if magicHealthFrame then
+                local textLabel = magicHealthFrame:FindFirstChild("TextLabel")
+                if textLabel then
+                    textLabel.Text = "Heavenly Restriction." -- Ult Renamer
+                    return
+                end
+            end
+        end
+        wait(1)
+    end
+end
+
+--{( MOVE 1 )}
+local animationId = 10468665991
+ 
+ 
+local player = game.Players.LocalPlayer
+ 
+local character = player.Character or player.CharacterAdded:Wait()
+ 
+local humanoid = character:WaitForChild("Humanoid")
+ 
+ 
+local function onAnimationPlayed(animationTrack)
+ 
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+ 
+local p = game.Players.LocalPlayer
+ 
+local Humanoid = p.Character:WaitForChild("Humanoid")
+ 
+ 
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+ 
+    animTrack:Stop()
+ 
+end
+ 
+ 
+local AnimAnim = Instance.new("Animation")
+ 
+AnimAnim.AnimationId = "rbxassetid://17862066234"
+ 
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+ 
+
+local startTime = 0.3
+ 
+ 
+Anim:Play()
+ 
+Anim:AdjustSpeed(1)
+ 
+Anim.TimePosition = startTime
+ 
+Anim:AdjustSpeed(1.35)
+
+ local assetId = "rbxassetid://" -- Replace with your actual Asset ID
+local distance = 5000 -- Distance to move forward
+local duration = 13 -- Duration of the tween
+
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+local SoundService = game:GetService("SoundService")
+
+-- Function to load the model
+local function importModel()
+    local success, model = pcall(function()
+        return game:GetObjects(assetId)[1] -- Load the first model
+    end)
+
+    if success and model and model:IsA("Model") then
+        model.Parent = workspace
+        local character = Players.LocalPlayer.Character
+        local rootPart = character and character.PrimaryPart
+
+        -- Find a valid PrimaryPart
+        local primaryPart = model.PrimaryPart or model:FindFirstChildWhichIsA("BasePart")
+        if primaryPart then
+            model.PrimaryPart = primaryPart -- Set the PrimaryPart if not already set
+        else
+            warn("No BasePart found in the model")
+            model:Destroy()
+            return
+        end
+
+        if rootPart then
+            -- Position the model in front of the player
+            model:SetPrimaryPartCFrame(rootPart.CFrame)
+
+            -- Create target CFrame
+            local forwardCFrame = primaryPart.CFrame * CFrame.new(0, 0, -distance)
+
+            -- Tween setup
+            local tweenInfo = TweenInfo.new(duration, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+            local tween = TweenService:Create(primaryPart, tweenInfo, {CFrame = forwardCFrame})
+
+            tween:Play()
+
+            -- Destroy after 5 seconds
+            task.delay(5, function()
+                model:Destroy()
+            end)
+        else
+            warn("Character has no PrimaryPart")
+            model:Destroy()
+        end
+    else
+        warn("Failed to load model or model is not valid")
+    end
+end
+
+-- Play sound
+local function playSound()
+    local fileUrl = ""
+    writefile("", game:HttpGet(fileUrl))
+    
+    local sound = Instance.new("Sound")
+    sound.SoundId = getcustomasset("")
+    sound.Volume = 4
+    sound.Parent = SoundService
+    sound:Play()
+end
+
+-- Run both functions at the same time using coroutines
+coroutine.wrap(function()
+task.wait(0.20125)
+	playSound()
+	
+    importModel()
+end)()
+
+
+    end
+ 
+end
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+--{( MOVE 2 )}
+local animationId = 10466974800
+ 
+ 
+local player = game.Players.LocalPlayer
+ 
+local character = player.Character or player.CharacterAdded:Wait()
+ 
+local humanoid = character:WaitForChild("Humanoid")
+ 
+ 
+local function onAnimationPlayed(animationTrack)
+ 
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+ 
+local p = game.Players.LocalPlayer
+ 
+local Humanoid = p.Character:WaitForChild("Humanoid")
+ 
+ 
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+ 
+    animTrack:Stop()
+ 
+end
+ 
+ 
+local AnimAnim = Instance.new("Animation")
+ 
+AnimAnim.AnimationId = "rbxassetid://116753755471636"
+ 
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+ 
+
+local startTime = 1
+ 
+ 
+Anim:Play()
+ 
+Anim:AdjustSpeed(0.5)
+ 
+Anim.TimePosition = startTime
+ 
+Anim:AdjustSpeed(0.5)
+
+ local assetId = "rbxassetid://" -- Replace with your actual Asset ID
+local distance = 5000 -- Distance to move forward
+local duration = 13 -- Duration of the tween
+
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+local SoundService = game:GetService("SoundService")
+
+-- Function to load the model
+local function importModel()
+    local success, model = pcall(function()
+        return game:GetObjects(assetId)[1] -- Load the first model
+    end)
+
+    if success and model and model:IsA("Model") then
+        model.Parent = workspace
+        local character = Players.LocalPlayer.Character
+        local rootPart = character and character.PrimaryPart
+
+        -- Find a valid PrimaryPart
+        local primaryPart = model.PrimaryPart or model:FindFirstChildWhichIsA("BasePart")
+        if primaryPart then
+            model.PrimaryPart = primaryPart -- Set the PrimaryPart if not already set
+        else
+            warn("No BasePart found in the model")
+            model:Destroy()
+            return
+        end
+
+        if rootPart then
+            -- Position the model in front of the player
+            model:SetPrimaryPartCFrame(rootPart.CFrame)
+
+            -- Create target CFrame
+            local forwardCFrame = primaryPart.CFrame * CFrame.new(0, 0, -distance)
+
+            -- Tween setup
+            local tweenInfo = TweenInfo.new(duration, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+            local tween = TweenService:Create(primaryPart, tweenInfo, {CFrame = forwardCFrame})
+
+            tween:Play()
+
+            -- Destroy after 5 seconds
+            task.delay(5, function()
+                model:Destroy()
+            end)
+        else
+            warn("Character has no PrimaryPart")
+            model:Destroy()
+        end
+    else
+        warn("Failed to load model or model is not valid")
+    end
+end
+
+-- Play sound
+local function playSound()
+    local fileUrl = ""
+    writefile("Disman1.mp3", game:HttpGet(fileUrl))
+    
+    local sound = Instance.new("Sound")
+    sound.SoundId = getcustomasset("Disman1.mp3")
+    sound.Volume = 3
+    sound.Parent = SoundService
+    sound:Play()
+end
+
+-- Run both functions at the same time using coroutines
+coroutine.wrap(function()
+task.wait(0.20125)
+	playSound()
+	
+    importModel()
+end)()
+
+
+    end
+ 
+end
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+--{( MOVE 3 )}
+local animationId = 10471336737
+ 
+ 
+local player = game.Players.LocalPlayer
+ 
+local character = player.Character or player.CharacterAdded:Wait()
+ 
+local humanoid = character:WaitForChild("Humanoid")
+ 
+ 
+local function onAnimationPlayed(animationTrack)
+ 
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+ 
+local p = game.Players.LocalPlayer
+ 
+local Humanoid = p.Character:WaitForChild("Humanoid")
+ 
+ 
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+ 
+    animTrack:Stop()
+ 
+end
+ 
+ 
+local AnimAnim = Instance.new("Animation")
+ 
+AnimAnim.AnimationId = "rbxassetid://18179181663"
+ 
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+ 
+
+local startTime = 0.3
+ 
+ 
+Anim:Play()
+ 
+Anim:AdjustSpeed(0.7)
+ 
+Anim.TimePosition = startTime
+ 
+Anim:AdjustSpeed(0.7)
+
+ local assetId = "rbxassetid://" -- Replace with your actual Asset ID
+local distance = 5000 -- Distance to move forward
+local duration = 13 -- Duration of the tween
+
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+local SoundService = game:GetService("SoundService")
+
+-- Function to load the model
+local function importModel()
+    local success, model = pcall(function()
+        return game:GetObjects(assetId)[1] -- Load the first model
+    end)
+
+    if success and model and model:IsA("Model") then
+        model.Parent = workspace
+        local character = Players.LocalPlayer.Character
+        local rootPart = character and character.PrimaryPart
+
+        -- Find a valid PrimaryPart
+        local primaryPart = model.PrimaryPart or model:FindFirstChildWhichIsA("BasePart")
+        if primaryPart then
+            model.PrimaryPart = primaryPart -- Set the PrimaryPart if not already set
+        else
+            warn("No BasePart found in the model")
+            model:Destroy()
+            return
+        end
+
+        if rootPart then
+            -- Position the model in front of the player
+            model:SetPrimaryPartCFrame(rootPart.CFrame)
+
+            -- Create target CFrame
+            local forwardCFrame = primaryPart.CFrame * CFrame.new(0, 0, -distance)
+
+            -- Tween setup
+            local tweenInfo = TweenInfo.new(duration, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+            local tween = TweenService:Create(primaryPart, tweenInfo, {CFrame = forwardCFrame})
+
+            tween:Play()
+
+            -- Destroy after 5 seconds
+            task.delay(5, function()
+                model:Destroy()
+            end)
+        else
+            warn("Character has no PrimaryPart")
+            model:Destroy()
+        end
+    else
+        warn("Failed to load model or model is not valid")
+    end
+end
+
+-- Play sound
+local function playSound()
+    local fileUrl = ""
+    writefile("Disman1.mp3", game:HttpGet(fileUrl))
+    
+    local sound = Instance.new("Sound")
+    sound.SoundId = getcustomasset("Disman1.mp3")
+    sound.Volume = 3
+    sound.Parent = SoundService
+    sound:Play()
+end
+
+-- Run both functions at the same time using coroutines
+coroutine.wrap(function()
+task.wait(0.20125)
+	playSound()
+	
+    importModel()
+end)()
+
+
+    end
+ 
+end
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+--{( MOVE 4 )}
+local animationId = 12510170988
+ 
+ 
+local player = game.Players.LocalPlayer
+ 
+local character = player.Character or player.CharacterAdded:Wait()
+ 
+local humanoid = character:WaitForChild("Humanoid")
+ 
+ 
+local function onAnimationPlayed(animationTrack)
+ 
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+ 
+local p = game.Players.LocalPlayer
+ 
+local Humanoid = p.Character:WaitForChild("Humanoid")
+ 
+ 
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+ 
+    animTrack:Stop()
+ 
+end
+ 
+ 
+local AnimAnim = Instance.new("Animation")
+ 
+AnimAnim.AnimationId = "rbxassetid://17450393107"
+ 
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+ 
+
+local startTime = 0.01
+ 
+ 
+Anim:Play()
+ 
+Anim:AdjustSpeed(0.5)
+ 
+Anim.TimePosition = startTime
+ 
+Anim:AdjustSpeed(0.5)
+
+ local assetId = "rbxassetid://" -- Replace with your actual Asset ID
+local distance = 5000 -- Distance to move forward
+local duration = 13 -- Duration of the tween
+
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+local SoundService = game:GetService("SoundService")
+
+-- Function to load the model
+local function importModel()
+    local success, model = pcall(function()
+        return game:GetObjects(assetId)[1] -- Load the first model
+    end)
+
+    if success and model and model:IsA("Model") then
+        model.Parent = workspace
+        local character = Players.LocalPlayer.Character
+        local rootPart = character and character.PrimaryPart
+
+        -- Find a valid PrimaryPart
+        local primaryPart = model.PrimaryPart or model:FindFirstChildWhichIsA("BasePart")
+        if primaryPart then
+            model.PrimaryPart = primaryPart -- Set the PrimaryPart if not already set
+        else
+            warn("No BasePart found in the model")
+            model:Destroy()
+            return
+        end
+
+        if rootPart then
+            -- Position the model in front of the player
+            model:SetPrimaryPartCFrame(rootPart.CFrame)
+
+            -- Create target CFrame
+            local forwardCFrame = primaryPart.CFrame * CFrame.new(0, 0, -distance)
+
+            -- Tween setup
+            local tweenInfo = TweenInfo.new(duration, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+            local tween = TweenService:Create(primaryPart, tweenInfo, {CFrame = forwardCFrame})
+
+            tween:Play()
+
+            -- Destroy after 5 seconds
+            task.delay(5, function()
+                model:Destroy()
+            end)
+        else
+            warn("Character has no PrimaryPart")
+            model:Destroy()
+        end
+    else
+        warn("Failed to load model or model is not valid")
+    end
+end
+
+-- Play sound
+local function playSound()
+    local fileUrl = ""
+    writefile("Disman1.mp3", game:HttpGet(fileUrl))
+    
+    local sound = Instance.new("Sound")
+    sound.SoundId = getcustomasset("Disman1.mp3")
+    sound.Volume = 3
+    sound.Parent = SoundService
+    sound:Play()
+end
+
+-- Run both functions at the same time using coroutines
+coroutine.wrap(function()
+task.wait(0.20125)
+	playSound()
+	
+    importModel()
+end)()
+
+
+    end
+ 
+end
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+--{( ULTIMATE ACTIVATION )}
+local animationId = 12447707844
+ 
+ 
+local player = game.Players.LocalPlayer
+ 
+local character = player.Character or player.CharacterAdded:Wait()
+ 
+local humanoid = character:WaitForChild("Humanoid")
+ 
+ 
+local function onAnimationPlayed(animationTrack)
+ 
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+ 
+local p = game.Players.LocalPlayer
+ 
+local Humanoid = p.Character:WaitForChild("Humanoid")
+ 
+ 
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+ 
+    animTrack:Stop()
+ 
+end
+ 
+ 
+local AnimAnim = Instance.new("Animation")
+ 
+AnimAnim.AnimationId = "rbxassetid://18445236460"
+ 
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+ 
+
+local startTime = 0.9
+ 
+ 
+Anim:Play()
+ 
+Anim:AdjustSpeed(0.77)
+ 
+Anim.TimePosition = startTime
+ 
+Anim:AdjustSpeed(0.77)
+
+ local assetId = "rbxassetid://" -- Replace with your actual Asset ID
+local distance = 5000 -- Distance to move forward
+local duration = 13 -- Duration of the tween
+
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+local SoundService = game:GetService("SoundService")
+
+-- Function to load the model
+local function importModel()
+    local success, model = pcall(function()
+        return game:GetObjects(assetId)[1] -- Load the first model
+    end)
+
+    if success and model and model:IsA("Model") then
+        model.Parent = workspace
+        local character = Players.LocalPlayer.Character
+        local rootPart = character and character.PrimaryPart
+
+        -- Find a valid PrimaryPart
+        local primaryPart = model.PrimaryPart or model:FindFirstChildWhichIsA("BasePart")
+        if primaryPart then
+            model.PrimaryPart = primaryPart -- Set the PrimaryPart if not already set
+        else
+            warn("No BasePart found in the model")
+            model:Destroy()
+            return
+        end
+
+        if rootPart then
+            -- Position the model in front of the player
+            model:SetPrimaryPartCFrame(rootPart.CFrame)
+
+            -- Create target CFrame
+            local forwardCFrame = primaryPart.CFrame * CFrame.new(0, 0, -distance)
+
+            -- Tween setup
+            local tweenInfo = TweenInfo.new(duration, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+            local tween = TweenService:Create(primaryPart, tweenInfo, {CFrame = forwardCFrame})
+
+            tween:Play()
+
+            -- Destroy after 5 seconds
+            task.delay(5, function()
+                model:Destroy()
+            end)
+        else
+            warn("Character has no PrimaryPart")
+            model:Destroy()
+        end
+    else
+        warn("Failed to load model or model is not valid")
+    end
+end
+
+-- Play sound
+local function playSound()
+    local fileUrl = "https://raw.githubusercontent.com/khangnotbad/amilose/refs/heads/main/amilose.mp3"
+    writefile("amilose", game:HttpGet(fileUrl))
+    
+    local sound = Instance.new("Sound")
+    sound.SoundId = getcustomasset("amilose")
+    sound.Volume = 6
+    sound.Parent = SoundService
+    sound:Play()
+end
+
+-- Run both functions at the same time using coroutines
+coroutine.wrap(function()
+task.wait(0.20125)
+	playSound()
+	
+    importModel()
+end)()
+
+
+    end
+ 
+end
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+--{( DEAth counter )}
+local animationId = 11343318134
+ 
+ 
+local player = game.Players.LocalPlayer
+ 
+local character = player.Character or player.CharacterAdded:Wait()
+ 
+local humanoid = character:WaitForChild("Humanoid")
+ 
+ 
+local function onAnimationPlayed(animationTrack)
+ 
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+ 
+local p = game.Players.LocalPlayer
+ 
+local Humanoid = p.Character:WaitForChild("Humanoid")
+ 
+ 
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+ 
+    animTrack:Stop()
+ 
+end
+ 
+ 
+local AnimAnim = Instance.new("Animation")
+ 
+AnimAnim.AnimationId = "rbxassetid://16746824621"
+ 
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+ 
+
+local startTime = 0.2
+ 
+ 
+Anim:Play()
+ 
+Anim:AdjustSpeed(0.2)
+ 
+Anim.TimePosition = startTime
+ 
+Anim:AdjustSpeed(0.2)
+
+ local assetId = "rbxassetid://" -- Replace with your actual Asset ID
+local distance = 5000 -- Distance to move forward
+local duration = 13 -- Duration of the tween
+
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+local SoundService = game:GetService("SoundService")
+
+-- Function to load the model
+local function importModel()
+    local success, model = pcall(function()
+        return game:GetObjects(assetId)[1] -- Load the first model
+    end)
+
+    if success and model and model:IsA("Model") then
+        model.Parent = workspace
+        local character = Players.LocalPlayer.Character
+        local rootPart = character and character.PrimaryPart
+
+        -- Find a valid PrimaryPart
+        local primaryPart = model.PrimaryPart or model:FindFirstChildWhichIsA("BasePart")
+        if primaryPart then
+            model.PrimaryPart = primaryPart -- Set the PrimaryPart if not already set
+        else
+            warn("No BasePart found in the model")
+            model:Destroy()
+            return
+        end
+
+        if rootPart then
+            -- Position the model in front of the player
+            model:SetPrimaryPartCFrame(rootPart.CFrame)
+
+            -- Create target CFrame
+            local forwardCFrame = primaryPart.CFrame * CFrame.new(0, 0, -distance)
+
+            -- Tween setup
+            local tweenInfo = TweenInfo.new(duration, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+            local tween = TweenService:Create(primaryPart, tweenInfo, {CFrame = forwardCFrame})
+
+            tween:Play()
+
+            -- Destroy after 5 seconds
+            task.delay(5, function()
+                model:Destroy()
+            end)
+        else
+            warn("Character has no PrimaryPart")
+            model:Destroy()
+        end
+    else
+        warn("Failed to load model or model is not valid")
+    end
+end
+
+-- Play sound
+local function playSound()
+    local fileUrl = "https://raw.githubusercontent.com/khangnotbad/grandma/refs/heads/main/grandma.mp3"
+    writefile("grandma.mp3", game:HttpGet(fileUrl))
+    
+    local sound = Instance.new("Sound")
+    sound.SoundId = getcustomasset("grandma.mp3")
+    sound.Volume = 3
+    sound.Parent = SoundService
+    sound:Play()
+end
+
+-- Run both functions at the same time using coroutines
+coroutine.wrap(function()
+task.wait(0.20125)
+	playSound()
+	
+    importModel()
+end)()
+
+
+    end
+ 
+end
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+--{( TABLE FLIP )}
+local animationId = 11365563255
+ 
+ 
+local player = game.Players.LocalPlayer
+ 
+local character = player.Character or player.CharacterAdded:Wait()
+ 
+local humanoid = character:WaitForChild("Humanoid")
+ 
+ 
+local function onAnimationPlayed(animationTrack)
+ 
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+ 
+local p = game.Players.LocalPlayer
+ 
+local Humanoid = p.Character:WaitForChild("Humanoid")
+ 
+ 
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+ 
+    animTrack:Stop()
+ 
+end
+ 
+ 
+local AnimAnim = Instance.new("Animation")
+ 
+AnimAnim.AnimationId = "rbxassetid://13365849295"
+ 
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+ 
+
+local startTime = 0.95
+ 
+ 
+Anim:Play()
+ 
+Anim:AdjustSpeed(0.2)
+ 
+Anim.TimePosition = startTime
+ 
+Anim:AdjustSpeed(0.2)
+
+ local assetId = "rbxassetid://" -- Replace with your actual Asset ID
+local distance = 5000 -- Distance to move forward
+local duration = 13 -- Duration of the tween
+
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+local SoundService = game:GetService("SoundService")
+
+-- Function to load the model
+local function importModel()
+    local success, model = pcall(function()
+        return game:GetObjects(assetId)[1] -- Load the first model
+    end)
+
+    if success and model and model:IsA("Model") then
+        model.Parent = workspace
+        local character = Players.LocalPlayer.Character
+        local rootPart = character and character.PrimaryPart
+
+        -- Find a valid PrimaryPart
+        local primaryPart = model.PrimaryPart or model:FindFirstChildWhichIsA("BasePart")
+        if primaryPart then
+            model.PrimaryPart = primaryPart -- Set the PrimaryPart if not already set
+        else
+            warn("No BasePart found in the model")
+            model:Destroy()
+            return
+        end
+
+        if rootPart then
+            -- Position the model in front of the player
+            model:SetPrimaryPartCFrame(rootPart.CFrame)
+
+            -- Create target CFrame
+            local forwardCFrame = primaryPart.CFrame * CFrame.new(0, 0, -distance)
+
+            -- Tween setup
+            local tweenInfo = TweenInfo.new(duration, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+            local tween = TweenService:Create(primaryPart, tweenInfo, {CFrame = forwardCFrame})
+
+            tween:Play()
+
+            -- Destroy after 5 seconds
+            task.delay(5, function()
+                model:Destroy()
+            end)
+        else
+            warn("Character has no PrimaryPart")
+            model:Destroy()
+        end
+    else
+        warn("Failed to load model or model is not valid")
+    end
+end
+
+-- Play sound
+local function playSound()
+    local fileUrl = "https://raw.githubusercontent.com/khangnotbad/toji4k/refs/heads/main/toji4k.mp3"
+    writefile("toji4k.mp3", game:HttpGet(fileUrl))
+    
+    local sound = Instance.new("Sound")
+    sound.SoundId = getcustomasset("toji4k.mp3")
+    sound.Volume = 5
+    sound.Parent = SoundService
+    sound:Play()
+end
+
+-- Run both functions at the same time using coroutines
+coroutine.wrap(function()
+task.wait(0.20125)
+	playSound()
+	
+    importModel()
+end)()
+
+
+    end
+ 
+end
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+--{( Serious punch )}
+local animationId = 12983333733
+ 
+ 
+local player = game.Players.LocalPlayer
+ 
+local character = player.Character or player.CharacterAdded:Wait()
+ 
+local humanoid = character:WaitForChild("Humanoid")
+ 
+ 
+local function onAnimationPlayed(animationTrack)
+ 
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+ 
+local p = game.Players.LocalPlayer
+ 
+local Humanoid = p.Character:WaitForChild("Humanoid")
+ 
+ 
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+ 
+    animTrack:Stop()
+ 
+end
+ 
+ 
+local AnimAnim = Instance.new("Animation")
+ 
+AnimAnim.AnimationId = "rbxassetid://105811521074269"
+ 
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+ 
+
+local startTime = 0.5
+ 
+ 
+Anim:Play()
+ 
+Anim:AdjustSpeed(0.2)
+ 
+Anim.TimePosition = startTime
+ 
+Anim:AdjustSpeed(0.2)
+
+ local assetId = "rbxassetid://" -- Replace with your actual Asset ID
+local distance = 5000 -- Distance to move forward
+local duration = 13 -- Duration of the tween
+
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+local SoundService = game:GetService("SoundService")
+
+-- Function to load the model
+local function importModel()
+    local success, model = pcall(function()
+        return game:GetObjects(assetId)[1] -- Load the first model
+    end)
+
+    if success and model and model:IsA("Model") then
+        model.Parent = workspace
+        local character = Players.LocalPlayer.Character
+        local rootPart = character and character.PrimaryPart
+
+        -- Find a valid PrimaryPart
+        local primaryPart = model.PrimaryPart or model:FindFirstChildWhichIsA("BasePart")
+        if primaryPart then
+            model.PrimaryPart = primaryPart -- Set the PrimaryPart if not already set
+        else
+            warn("No BasePart found in the model")
+            model:Destroy()
+            return
+        end
+
+        if rootPart then
+            -- Position the model in front of the player
+            model:SetPrimaryPartCFrame(rootPart.CFrame)
+
+            -- Create target CFrame
+            local forwardCFrame = primaryPart.CFrame * CFrame.new(0, 0, -distance)
+
+            -- Tween setup
+            local tweenInfo = TweenInfo.new(duration, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+            local tween = TweenService:Create(primaryPart, tweenInfo, {CFrame = forwardCFrame})
+
+            tween:Play()
+
+            -- Destroy after 5 seconds
+            task.delay(5, function()
+                model:Destroy()
+            end)
+        else
+            warn("Character has no PrimaryPart")
+            model:Destroy()
+        end
+    else
+        warn("Failed to load model or model is not valid")
+    end
+end
+
+-- Play sound
+local function playSound()
+    local fileUrl = "https://raw.githubusercontent.com/khangnotbad/zenin/refs/heads/main/zenin.mp3"
+    writefile("zenin.mp3", game:HttpGet(fileUrl))
+    
+    local sound = Instance.new("Sound")
+    sound.SoundId = getcustomasset("zenin.mp3")
+    sound.Volume = 3
+    sound.Parent = SoundService
+    sound:Play()
+end
+
+-- Run both functions at the same time using coroutines
+coroutine.wrap(function()
+task.wait(0.20125)
+	playSound()
+	
+    importModel()
+end)()
+
+
+    end
+ 
+end
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+--{( omni punch)}
+local animationId = 13927612951
+ 
+ 
+local player = game.Players.LocalPlayer
+ 
+local character = player.Character or player.CharacterAdded:Wait()
+ 
+local humanoid = character:WaitForChild("Humanoid")
+ 
+ 
+local function onAnimationPlayed(animationTrack)
+ 
+    if animationTrack.Animation.AnimationId == "rbxassetid://" .. animationId then
+ 
+local p = game.Players.LocalPlayer
+ 
+local Humanoid = p.Character:WaitForChild("Humanoid")
+ 
+ 
+for _, animTrack in pairs(Humanoid:GetPlayingAnimationTracks()) do
+ 
+    animTrack:Stop()
+ 
+end
+ 
+ 
+local AnimAnim = Instance.new("Animation")
+ 
+AnimAnim.AnimationId = "rbxassetid://116753755471636"
+ 
+local Anim = Humanoid:LoadAnimation(AnimAnim)
+ 
+
+local startTime = 1
+ 
+ 
+Anim:Play()
+ 
+Anim:AdjustSpeed(0.5)
+ 
+Anim.TimePosition = startTime
+ 
+Anim:AdjustSpeed(0.5)
+
+ local assetId = "rbxassetid://" -- Replace with your actual Asset ID
+local distance = 5000 -- Distance to move forward
+local duration = 13 -- Duration of the tween
+
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+local SoundService = game:GetService("SoundService")
+
+-- Function to load the model
+local function importModel()
+    local success, model = pcall(function()
+        return game:GetObjects(assetId)[1] -- Load the first model
+    end)
+
+    if success and model and model:IsA("Model") then
+        model.Parent = workspace
+        local character = Players.LocalPlayer.Character
+        local rootPart = character and character.PrimaryPart
+
+        -- Find a valid PrimaryPart
+        local primaryPart = model.PrimaryPart or model:FindFirstChildWhichIsA("BasePart")
+        if primaryPart then
+            model.PrimaryPart = primaryPart -- Set the PrimaryPart if not already set
+        else
+            warn("No BasePart found in the model")
+            model:Destroy()
+            return
+        end
+
+        if rootPart then
+            -- Position the model in front of the player
+            model:SetPrimaryPartCFrame(rootPart.CFrame)
+
+            -- Create target CFrame
+            local forwardCFrame = primaryPart.CFrame * CFrame.new(0, 0, -distance)
+
+            -- Tween setup
+            local tweenInfo = TweenInfo.new(duration, Enum.EasingStyle.Linear, Enum.EasingDirection.Out)
+            local tween = TweenService:Create(primaryPart, tweenInfo, {CFrame = forwardCFrame})
+
+            tween:Play()
+
+            -- Destroy after 5 seconds
+            task.delay(5, function()
+                model:Destroy()
+            end)
+        else
+            warn("Character has no PrimaryPart")
+            model:Destroy()
+        end
+    else
+        warn("Failed to load model or model is not valid")
+    end
+end
+
+-- Play sound
+local function playSound()
+    local fileUrl = "https://raw.githubusercontent.com/khangnotbad/tojirealisehehad/refs/heads/main/Tojirealisehehasason.mp3"
+    writefile("Tojirealisehehasason.mp3", game:HttpGet(fileUrl))
+    
+    local sound = Instance.new("Sound")
+    sound.SoundId = getcustomasset("Tojirealisehehasason.mp3")
+    sound.Volume = 5
+    sound.Parent = SoundService
+    sound:Play()
+end
+
+-- Run both functions at the same time using coroutines
+coroutine.wrap(function()
+task.wait(0.20125)
+	playSound()
+	
+    importModel()
+end)()
+
+
+    end
+ 
+end
+
+humanoid.AnimationPlayed:Connect(onAnimationPlayed)
+
+-- Tp tooooooooooooooolll 
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+
+while not LocalPlayer do
+    wait()
+    LocalPlayer = Players.LocalPlayer
+end
+
+
+local function createTool(name)
+    local newTool = Instance.new("Tool")
+    newTool.Name = name
+    newTool.RequiresHandle = false
+    newTool.CanBeDropped = false
+    newTool.Parent = LocalPlayer.Backpack
+    return newTool
+end
+
+
+local function bindTeleportLogic(tool)
+    tool.Activated:Connect(function()
+        teleportToClosestPlayer(tool)
+    end)
+end
+
+-- Credits
+local gui = Instance.new("ScreenGui")
+gui.Name = "CreditsGui"
+gui.ResetOnSpawn = false
+gui.Parent = game.CoreGui
+
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 500, 0, 250)
+frame.Position = UDim2.new(0.5, -250, 0.5, -100)
+frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+frame.BorderSizePixel = 0
+frame.Parent = gui
+
+
+local frameGradient = Instance.new("UIGradient")
+frameGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(180, 180, 180)),
+    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(100, 100, 100)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(180, 180, 180))
+})
+frameGradient.Rotation = 90
+frameGradient.Parent = frame
+
+local frameUICorner = Instance.new("UICorner")
+frameUICorner.CornerRadius = UDim.new(0, 12)
+frameUICorner.Parent = frame
+
+local topHighlight = Instance.new("Frame")
+topHighlight.Size = UDim2.new(1, 0, 0.1, 0)
+topHighlight.BackgroundTransparency = 0.5
+topHighlight.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+topHighlight.Parent = frame
+
+local highlightGradient = Instance.new("UIGradient")
+highlightGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255), 0)
+})
+highlightGradient.Rotation = 90
+highlightGradient.Parent = topHighlight
+
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(0, 500, 0, 50)
+title.Position = UDim2.new(0.5, -250, 0.5, -80)
+title.BackgroundTransparency = 1
+title.Text = "SPECIAL THANKS TO"
+title.Font = Enum.Font.GothamBold
+title.TextSize = 30
+title.TextColor3 = Color3.fromRGB(240, 240, 240)
+title.TextYAlignment = Enum.TextYAlignment.Center
+title.Parent = gui
+
+local creditsText = Instance.new("TextLabel")
+creditsText.Size = UDim2.new(1, -40, 1, -100)
+creditsText.Position = UDim2.new(0, 20, 0, 60)
+creditsText.BackgroundTransparency = 1
+creditsText.Text = "Inverted - owner Khang - Vfx  - main developer\n\"Just wanted to say a big thank you for helping me make this script come true. Your support and contributions mean a lot!"
+creditsText.Font = Enum.Font.Gotham
+creditsText.TextSize = 22
+creditsText.TextWrapped = true
+creditsText.TextColor3 = Color3.fromRGB(220, 220, 220)
+creditsText.TextYAlignment = Enum.TextYAlignment.Top
+creditsText.Parent = frame
+
+local button = Instance.new("TextButton")
+button.Size = UDim2.new(0, 240, 0, 50)
+button.Position = UDim2.new(0.5, -120, 1, -60)
+button.BackgroundColor3 = Color3.fromRGB(130, 130, 130)
+button.Text = ".gg/KhangHub | Moveset"
+button.Font = Enum.Font.GothamBold
+button.TextSize = 24
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.Parent = frame
+
+local buttonUICorner = Instance.new("UICorner")
+buttonUICorner.CornerRadius = UDim.new(0, 12)
+buttonUICorner.Parent = button
+
+local buttonGradient = Instance.new("UIGradient")
+buttonGradient.Color = ColorSequence.new({
+    ColorSequenceKeypoint.new(0, Color3.fromRGB(200, 200, 200)),
+    ColorSequenceKeypoint.new(1, Color3.fromRGB(100, 100, 100))
+})
+buttonGradient.Rotation = 90  -- Vertical gradient
+buttonGradient.Parent = button
+
+button.MouseButton1Click:Connect(function()
+    setclipboard("https://discord.gg/DdQEWwJa")
+    button.Text = "Copied!"
+    wait(1)
+    gui:Destroy()
+end)
+
+-- cool credits
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+local textLabel = Instance.new("TextLabel")
+textLabel.Parent = screenGui
+textLabel.Text = "MADE BY Khang | MOVESET"
+textLabel.Size = UDim2.new(0, 300, 0, 100)
+textLabel.Position = UDim2.new(0.5, -150, 0, 10)
+textLabel.AnchorPoint = Vector2.new(0.5, 0)
+textLabel.BackgroundTransparency = 1
+textLabel.TextColor3 = Color3.new(1, 1, 1)
+textLabel.TextStrokeTransparency = 0.5
+textLabel.TextStrokeColor3 = Color3.fromRGB(0, 0, 0)
+textLabel.Font = Enum.Font.Cartoon
+textLabel.TextScaled = true
+textLabel.TextTransparency = 1
+
+local stroke = Instance.new("UIStroke")
+stroke.Parent = textLabel
+stroke.Thickness = 3 -- Thicker outline
+stroke.Color = Color3.fromRGB(0, 0, 0)
+stroke.Transparency = 0.2
+
+local tweenService = game:GetService("TweenService")
+
+local fadeInTween = tweenService:Create(textLabel, TweenInfo.new(2, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {TextTransparency = 0})
+fadeInTween:Play()
+
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ATrainz/Phantasm/refs/heads/main/Games/TSB.lua"))()
+
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+loadstring(game:HttpGet("https://paste.ee/r/mmQkO"))()
+ 
